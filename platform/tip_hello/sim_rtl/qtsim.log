@@ -1,0 +1,185 @@
+# vsim -c TIP_HELLO_SIM -do "run.do" -l qtsim.log 
+# Start time: 16:07:45 on May 19,2026
+# Loading sv_std.std
+# Loading work.TIP_HELLO_SIM
+# Loading work.CLOCK_GENERATOR
+# Loading work.NCSIM_MANAGER
+# Loading work.NCSIM_PRINTF
+# Loading work.TIP_HELLO
+# Loading work.TIP_HELLO_RTL
+# Loading work.RVC_ORCA
+# Loading work.ERVP_COMMON_PERI_GROUP
+# Loading work.ERVP_APB_BUS
+# Loading work.RVX_MODULE_051
+# Loading work.ERVP_MUX_WITH_ONEHOT_ENCODED_SELECT
+# Loading work.ERVP_IROM_APB
+# Loading work.RVX_MODULE_082
+# Loading work.ERVP_TICK_GENERATOR
+# Loading work.ERVP_COUNTER
+# Loading work.ERVP_REAL_CLOCK
+# Loading work.ERVP_EXTERNAL_PERI_GROUP
+# Loading work.RVX_MODULE_110
+# Loading work.RVX_MODULE_030
+# Loading work.RVX_MODULE_078
+# Loading work.ERVP_GPIO
+# Loading work.ERVP_SYNCHRONIZER
+# Loading work.ERVP_DEBOUNCER
+# Loading work.RVX_MODULE_040
+# Loading work.ERVP_CORE_PERI_GROUP
+# Loading work.ERVP_PLATFORM_CONTROLLER
+# Loading work.RVX_MODULE_009
+# Loading work.RVX_MODULE_103
+# Loading work.RVX_MODULE_013
+# Loading work.RVX_MODULE_108
+# Loading work.RVX_MODULE_029
+# Loading work.ERVP_FIFO
+# Loading work.ERVP_UPDOWN_COUNTER
+# Loading work.ERVP_MUX
+# Loading work.RVX_MODULE_065
+# Loading work.RVX_MODULE_123
+# Loading work.RESET_BUF
+# Loading work.RVX_MODULE_058
+# Loading work.RVX_MODULE_101
+# Loading work.RVX_MODULE_026
+# Loading work.RVX_MODULE_031
+# Loading work.RVX_MODULE_118
+# Loading work.MUNOC_DEFAULT_SNIM
+# Loading work.MUNOC_MODULE_06
+# Loading work.MUNOC_MODULE_21
+# Loading work.MUNOC_MODULE_34
+# Loading work.MUNOC_MODULE_46
+# Loading work.ERVP_COUNTER_WITH_ONEHOT_ENCODING
+# Loading work.MUNOC_MODULE_35
+# Loading work.MUNOC_MODULE_40
+# Loading work.ERVP_BARREL_SHIFTER
+# Loading work.RVX_MODULE_062
+# Loading work.RVX_MODULE_070
+# Loading work.MUNOC_MODULE_29
+# Loading work.MUNOC_MODULE_28
+# Loading work.ERVP_SMALL_FIFO
+# Loading work.ERVP_SHIFT_REGISTER
+# Loading work.ERVP_ASYNCH_FIFO
+# Loading work.MUNOC_MODULE_16
+# Loading work.MUNOC_MODULE_27
+# Loading work.MUNOC_MODULE_00
+# Loading work.MUNOC_AXI2APB_CONVERTER_
+# Loading work.MUNOC_AXI2LPIXS
+# Loading work.RVX_MODULE_095
+# Loading work.ERVP_GRANTER
+# Loading work.RVX_MODULE_037
+# Loading work.RVX_MODULE_092
+# Loading work.RVX_MODULE_036
+# Loading work.RVX_MODULE_111
+# Loading work.RVX_MODULE_007
+# Loading work.RVX_MODULE_022
+# Loading work.RVX_MODULE_017
+# Loading work.MUNOC_MODULE_07
+# Loading work.MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE
+# Loading work.MUNOC_MODULE_14
+# Loading work.MUNOC_MODULE_10
+# Loading work.MUNOC_MODULE_20
+# Loading work.MUNOC_AXI2APB_BRIDGE
+# Loading work.MUNOC_MODULE_01
+# Loading work.MUNOC_MODULE_02
+# Loading work.MUNOC_MODULE_44
+# Loading work.MUNOC_MODULE_33
+# Loading work.MUNOC_MODULE_22
+# Loading work.MUNOC_MODULE_12
+# Loading work.MUNOC_MODULE_31
+# Loading work.MUNOC_MODULE_43
+# Loading work.MUNOC_AHB_MASTER_NETWORK_INTERFACE_MODULE
+# Loading work.MUNOC_MODULE_37
+# Loading work.MUNOC_MODULE_39
+# Loading work.MUNOC_AXI_SLAVE_NETWORK_INTERFACE_MODULE
+# Loading work.MUNOC_MODULE_36
+# Loading work.MUNOC_MODULE_47
+# Loading work.MUNOC_MODULE_25
+# Loading work.MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
+# Loading work.MUNOC_MODULE_08
+# Loading work.MUNOC_MODULE_32
+# Loading work.MUNOC_NETWORK_DUAL_ROUTER
+# Loading work.MUNOC_NETWORK_ROUTER
+# Loading work.TIP_HELLO_CLOCK_PLL_0_00
+# Loading work.TIP_HELLO_SRAM_AXI_01
+# Loading work.ERVP_SPSRAM_CONTROLLER_AXI
+# Loading work.RVX_MODULE_088
+# Loading work.MUNOC_LPIXM2SCELL
+# Loading work.RVX_MODULE_016
+# Loading work.RVX_MODULE_072
+# Loading work.ERVP_DEMUX
+# Loading work.ERVP_DUPLICATOR
+# Loading work.RVX_MODULE_120
+# Loading work.RVX_MODULE_090
+# Loading work.RVX_MODULE_106
+# Loading work.RVX_MODULE_097
+# Loading work.RVX_MODULE_098
+# Loading work.RVX_MODULE_073
+# Loading work.RVX_MODULE_027
+# Loading work.RESET_NOT
+# Loading work.MUNOC_MODULE_04
+# Loading work.RVX_MODULE_076
+# Loading work.MUNOC_ROUTING_TABLE
+# Loading work.MUNOC_MODULE_38
+# Loading work.ERVP_MEMORY_CELL_1R1W
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.utils_pkg(body)
+# Loading work.constants_pkg(body)
+# Loading work.rv_components
+# Loading work.orca(rtl)
+# Loading work.orca_core(rtl)
+# Loading work.instruction_fetch(rtl)
+# Loading work.decode(rtl)
+# Loading work.register_file(rtl)
+# Loading ieee.std_logic_textio(body)
+# Loading work.execute(behavioural)
+# Loading work.arithmetic_unit(rtl)
+# Loading work.divider(rtl)
+# Loading work.branch_unit(rtl)
+# Loading work.load_store_unit(rtl)
+# Loading work.sys_call(rtl)
+# Loading work.vcp_handler(rtl)
+# Loading work.memory_interface(rtl)
+# Loading work.cache_mux(rtl)
+# Loading work.oimm_register(rtl)
+# Loading work.cache_controller(rtl)
+# Loading work.cache(rtl)
+# Loading work.axi_master(rtl)
+# Loading work.ERVP_ORCA_CACHE_AXI_MASTER_OLD
+# Loading work.a4l_master(rtl)
+# ** Warning: Design size of 31284 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# do run.do
+# 1
+# 
+# 
+# [NoC:INFO] micro NoC 4.5 is used 
+# [NoC:INFO] NOT monitoring routing error
+# [NoC:INFO] NOT monitoring undefined region access
+# [NoC:INFO] NOT monitoring transaction timeout
+# [NoC:INFO] NOT monitoring the bandwidth of IPs
+# [NoC:INFO] NOT monitoring the correctness of AXI protocol
+# 
+# 
+# [JTAG:INFO] initialized
+# [RESET CONTROLLER] all resets are released
+# [JTAG:INFO] release all reset
+# [JTAG:INFO] SRAM fast load start
+# [JTAG:INFO] SRAM load end
+# [JTAG:INFO] set app addr
+# [JTAG:INFO] set sim env
+# [JTAG:INFO] DR: 00000001
+# [JTAG:INFO] set ready-to-run
+# [JTAG:INFO] finished
+# 
+# 
+# [RVX/START] SIM@RTL
+# Hello World!
+# 
+# [PROC_STATUS]  1 cores have finished @           426794000 ns
+# ** Note: $finish    : /home/sanghun/RVX/rvx-tutorials/rvx_hwlib/lib_sim/ncsim/src/ncsim_manager.v(68)
+#    Time: 4415344200 ps  Iteration: 0  Instance: /TIP_HELLO_SIM/i_ncsim_manager
+# End time: 16:15:12 on May 19,2026, Elapsed time: 0:07:27
+# Errors: 0, Warnings: 1
