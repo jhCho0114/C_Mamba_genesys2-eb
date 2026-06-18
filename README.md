@@ -1,3 +1,5 @@
 # C_Mamba_genesys2-eb
 
-설명서는 pptx 파일을 확인해주세요
+설명서는 다음 두 pptx 파일을 확인해주세요
+- 6월2주차.pptx
+- ETRI_발표용_pres.pptx
