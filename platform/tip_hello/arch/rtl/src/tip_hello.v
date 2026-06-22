@@ -11,7 +11,7 @@
 // IN ANY FORM, BY ANY MEANS, IN WHOLE OR IN PART, WITHOUT THE
 // COMPLETE PRIOR WRITTEN PERMISSION OF ETRI.
 // ****************************************************************************
-// 2026-05-22
+// 2026-06-22
 // Kyuseung Han (han@etri.re.kr)
 // ****************************************************************************
 // ****************************************************************************
@@ -51,24 +51,20 @@ input wire printf_rx;
 
 
 
-wire clk_core;
-wire clk_noc;
-wire clk_100M;
-wire clk_200M;
 wire clk_system;
+wire clk_core;
 wire clk_system_external;
 wire clk_system_debug;
 wire clk_local_access;
 wire clk_process_000;
-wire gclk_core;
-wire gclk_noc;
-wire gclk_100M;
-wire gclk_200M;
+wire clk_noc;
 wire gclk_system;
+wire gclk_core;
 wire gclk_system_external;
 wire gclk_system_debug;
 wire gclk_local_access;
 wire gclk_process_000;
+wire gclk_noc;
 wire tick_1us;
 wire tick_62d5ms;
 wire tick_gpio;
@@ -80,24 +76,20 @@ wire [(6)-1:0] rstnn_seqeunce;
 wire [(6)-1:0] rstpp_seqeunce;
 wire rstnn_user;
 wire rstpp_user;
-wire i_rtl_clk_core;
-wire i_rtl_clk_noc;
-wire i_rtl_clk_100M;
-wire i_rtl_clk_200M;
 wire i_rtl_clk_system;
+wire i_rtl_clk_core;
 wire i_rtl_clk_system_external;
 wire i_rtl_clk_system_debug;
 wire i_rtl_clk_local_access;
 wire i_rtl_clk_process_000;
-wire i_rtl_gclk_core;
-wire i_rtl_gclk_noc;
-wire i_rtl_gclk_100M;
-wire i_rtl_gclk_200M;
+wire i_rtl_clk_noc;
 wire i_rtl_gclk_system;
+wire i_rtl_gclk_core;
 wire i_rtl_gclk_system_external;
 wire i_rtl_gclk_system_debug;
 wire i_rtl_gclk_local_access;
 wire i_rtl_gclk_process_000;
+wire i_rtl_gclk_noc;
 wire i_rtl_tick_1us;
 wire i_rtl_tick_62d5ms;
 wire i_rtl_tick_gpio;
@@ -114,8 +106,6 @@ wire i_rtl_i_test1_clk;
 wire i_rtl_i_test1_rstnn;
 wire i_rtl_i_pll0_external_rstnn;
 wire i_rtl_i_pll0_clk_system;
-wire i_rtl_i_pll0_clk_100M;
-wire i_rtl_i_pll0_clk_200M;
 wire i_rtl_i_system_sram_clk;
 wire i_rtl_i_system_sram_rstnn;
 wire i_rtl_pjtag_rtck;
@@ -177,8 +167,6 @@ wire i_pll0_external_clk;
 wire i_pll0_external_clk_pair;
 wire i_pll0_external_rstnn;
 wire i_pll0_clk_system;
-wire i_pll0_clk_100M;
-wire i_pll0_clk_200M;
 wire i_system_sram_clk;
 wire i_system_sram_rstnn;
 wire i_system_sram_rxawready;
@@ -215,24 +203,20 @@ wire [(2)-1:0] i_system_sram_rxrresp;
 TIP_HELLO_RTL
 i_rtl
 (
-	.clk_core(i_rtl_clk_core),
-	.clk_noc(i_rtl_clk_noc),
-	.clk_100M(i_rtl_clk_100M),
-	.clk_200M(i_rtl_clk_200M),
 	.clk_system(i_rtl_clk_system),
+	.clk_core(i_rtl_clk_core),
 	.clk_system_external(i_rtl_clk_system_external),
 	.clk_system_debug(i_rtl_clk_system_debug),
 	.clk_local_access(i_rtl_clk_local_access),
 	.clk_process_000(i_rtl_clk_process_000),
-	.gclk_core(i_rtl_gclk_core),
-	.gclk_noc(i_rtl_gclk_noc),
-	.gclk_100M(i_rtl_gclk_100M),
-	.gclk_200M(i_rtl_gclk_200M),
+	.clk_noc(i_rtl_clk_noc),
 	.gclk_system(i_rtl_gclk_system),
+	.gclk_core(i_rtl_gclk_core),
 	.gclk_system_external(i_rtl_gclk_system_external),
 	.gclk_system_debug(i_rtl_gclk_system_debug),
 	.gclk_local_access(i_rtl_gclk_local_access),
 	.gclk_process_000(i_rtl_gclk_process_000),
+	.gclk_noc(i_rtl_gclk_noc),
 	.tick_1us(i_rtl_tick_1us),
 	.tick_62d5ms(i_rtl_tick_62d5ms),
 	.tick_gpio(i_rtl_tick_gpio),
@@ -249,8 +233,6 @@ i_rtl
 	.i_test1_rstnn(i_rtl_i_test1_rstnn),
 	.i_pll0_external_rstnn(i_rtl_i_pll0_external_rstnn),
 	.i_pll0_clk_system(i_rtl_i_pll0_clk_system),
-	.i_pll0_clk_100M(i_rtl_i_pll0_clk_100M),
-	.i_pll0_clk_200M(i_rtl_i_pll0_clk_200M),
 	.i_system_sram_clk(i_rtl_i_system_sram_clk),
 	.i_system_sram_rstnn(i_rtl_i_system_sram_rstnn),
 	.pjtag_rtck(i_rtl_pjtag_rtck),
@@ -306,9 +288,7 @@ i_pll0
 	.external_clk(i_pll0_external_clk),
 	.external_clk_pair(i_pll0_external_clk_pair),
 	.external_rstnn(i_pll0_external_rstnn),
-	.clk_system(i_pll0_clk_system),
-	.clk_100M(i_pll0_clk_100M),
-	.clk_200M(i_pll0_clk_200M)
+	.clk_system(i_pll0_clk_system)
 );
 
 TIP_HELLO_SRAM_AXI_01
@@ -355,28 +335,22 @@ assign i_pll0_external_clk = external_clk_0;
 assign i_pll0_external_clk_pair = external_clk_0_pair;
 assign i_pll0_external_rstnn = i_rtl_i_pll0_external_rstnn;
 assign i_rtl_i_pll0_clk_system = i_pll0_clk_system;
-assign i_rtl_i_pll0_clk_100M = i_pll0_clk_100M;
-assign i_rtl_i_pll0_clk_200M = i_pll0_clk_200M;
 assign i_system_sram_clk = i_rtl_i_system_sram_clk;
 assign i_system_sram_rstnn = i_rtl_i_system_sram_rstnn;
-assign clk_core = i_rtl_clk_core;
-assign clk_noc = i_rtl_clk_noc;
-assign clk_100M = i_rtl_clk_100M;
-assign clk_200M = i_rtl_clk_200M;
 assign clk_system = i_rtl_clk_system;
+assign clk_core = i_rtl_clk_core;
 assign clk_system_external = i_rtl_clk_system_external;
 assign clk_system_debug = i_rtl_clk_system_debug;
 assign clk_local_access = i_rtl_clk_local_access;
 assign clk_process_000 = i_rtl_clk_process_000;
-assign gclk_core = i_rtl_gclk_core;
-assign gclk_noc = i_rtl_gclk_noc;
-assign gclk_100M = i_rtl_gclk_100M;
-assign gclk_200M = i_rtl_gclk_200M;
+assign clk_noc = i_rtl_clk_noc;
 assign gclk_system = i_rtl_gclk_system;
+assign gclk_core = i_rtl_gclk_core;
 assign gclk_system_external = i_rtl_gclk_system_external;
 assign gclk_system_debug = i_rtl_gclk_system_debug;
 assign gclk_local_access = i_rtl_gclk_local_access;
 assign gclk_process_000 = i_rtl_gclk_process_000;
+assign gclk_noc = i_rtl_gclk_noc;
 assign tick_1us = i_rtl_tick_1us;
 assign tick_62d5ms = i_rtl_tick_62d5ms;
 assign tick_gpio = i_rtl_tick_gpio;

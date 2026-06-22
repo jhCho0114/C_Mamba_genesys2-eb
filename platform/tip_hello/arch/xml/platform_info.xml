@@ -175,7 +175,7 @@
     </define>
     <define>
       <name>CORE_CLK_HZ</name>
-      <value type="dec">100000000</value>
+      <value type="dec">50000000</value>
     </define>
     <define>
       <name>UART_CLK_HZ</name>

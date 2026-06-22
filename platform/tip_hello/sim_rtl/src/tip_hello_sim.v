@@ -874,5 +874,6 @@ begin
 	end
 end
 
+`include "sim_user_region.vh"
 
 endmodule

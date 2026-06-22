@@ -1,5 +1,5 @@
 # vsim -c TIP_HELLO_SIM -do "run.do" -l qtsim.log 
-# Start time: 16:07:45 on May 19,2026
+# Start time: 13:02:07 on Jun 22,2026
 # Loading sv_std.std
 # Loading work.TIP_HELLO_SIM
 # Loading work.CLOCK_GENERATOR
@@ -90,13 +90,13 @@
 # Loading work.MUNOC_AHB_MASTER_NETWORK_INTERFACE_MODULE
 # Loading work.MUNOC_MODULE_37
 # Loading work.MUNOC_MODULE_39
-# Loading work.MUNOC_AXI_SLAVE_NETWORK_INTERFACE_MODULE
+# Loading work.MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
 # Loading work.MUNOC_MODULE_36
 # Loading work.MUNOC_MODULE_47
 # Loading work.MUNOC_MODULE_25
-# Loading work.MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
 # Loading work.MUNOC_MODULE_08
 # Loading work.MUNOC_MODULE_32
+# Loading work.MUNOC_AXI_SLAVE_NETWORK_INTERFACE_MODULE
 # Loading work.MUNOC_NETWORK_DUAL_ROUTER
 # Loading work.MUNOC_NETWORK_ROUTER
 # Loading work.TIP_HELLO_CLOCK_PLL_0_00
@@ -149,7 +149,7 @@
 # Loading work.axi_master(rtl)
 # Loading work.ERVP_ORCA_CACHE_AXI_MASTER_OLD
 # Loading work.a4l_master(rtl)
-# ** Warning: Design size of 31284 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# ** Warning: Design size of 31319 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # do run.do
 # 1
@@ -176,10 +176,12 @@
 # 
 # 
 # [RVX/START] SIM@RTL
-# Hello World!
+#  my helloworld and READ FILEIO?!
+# -120	-90	-60	-30	0	30	60	90	
+# =-=-=-=-=-=-
 # 
-# [PROC_STATUS]  1 cores have finished @           426794000 ns
+# [PROC_STATUS]  1 cores have finished @          1145688000 ns
 # ** Note: $finish    : /home/sanghun/RVX/rvx-tutorials/rvx_hwlib/lib_sim/ncsim/src/ncsim_manager.v(68)
-#    Time: 4415344200 ps  Iteration: 0  Instance: /TIP_HELLO_SIM/i_ncsim_manager
-# End time: 16:15:12 on May 19,2026, Elapsed time: 0:07:27
+#    Time: 11604497640 ps  Iteration: 0  Instance: /TIP_HELLO_SIM/i_ncsim_manager
+# End time: 13:22:26 on Jun 22,2026, Elapsed time: 0:20:19
 # Errors: 0, Warnings: 1

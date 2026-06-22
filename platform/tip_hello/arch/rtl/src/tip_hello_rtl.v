@@ -11,7 +11,7 @@
 // IN ANY FORM, BY ANY MEANS, IN WHOLE OR IN PART, WITHOUT THE
 // COMPLETE PRIOR WRITTEN PERMISSION OF ETRI.
 // ****************************************************************************
-// 2026-05-22
+// 2026-06-22
 // Kyuseung Han (han@etri.re.kr)
 // ****************************************************************************
 // ****************************************************************************
@@ -25,24 +25,20 @@
 
 module TIP_HELLO_RTL
 (
-	clk_core,
-	clk_noc,
-	clk_100M,
-	clk_200M,
 	clk_system,
+	clk_core,
 	clk_system_external,
 	clk_system_debug,
 	clk_local_access,
 	clk_process_000,
-	gclk_core,
-	gclk_noc,
-	gclk_100M,
-	gclk_200M,
+	clk_noc,
 	gclk_system,
+	gclk_core,
 	gclk_system_external,
 	gclk_system_debug,
 	gclk_local_access,
 	gclk_process_000,
+	gclk_noc,
 	tick_1us,
 	tick_62d5ms,
 	tick_gpio,
@@ -59,8 +55,6 @@ module TIP_HELLO_RTL
 	i_test1_rstnn,
 	i_pll0_external_rstnn,
 	i_pll0_clk_system,
-	i_pll0_clk_100M,
-	i_pll0_clk_200M,
 	i_system_sram_clk,
 	i_system_sram_rstnn,
 	pjtag_rtck,
@@ -113,24 +107,20 @@ module TIP_HELLO_RTL
 parameter BW_FNI_PHIT = `MAX_BW_FNI_PHIT;
 parameter BW_BNI_PHIT = `MAX_BW_BNI_PHIT;
 
-output wire clk_core;
-output wire clk_noc;
-output wire clk_100M;
-output wire clk_200M;
 output wire clk_system;
+output wire clk_core;
 output wire clk_system_external;
 output wire clk_system_debug;
 output wire clk_local_access;
 output wire clk_process_000;
-output wire gclk_core;
-output wire gclk_noc;
-output wire gclk_100M;
-output wire gclk_200M;
+output wire clk_noc;
 output wire gclk_system;
+output wire gclk_core;
 output wire gclk_system_external;
 output wire gclk_system_debug;
 output wire gclk_local_access;
 output wire gclk_process_000;
+output wire gclk_noc;
 output wire tick_1us;
 output wire tick_62d5ms;
 output wire tick_gpio;
@@ -147,8 +137,6 @@ output wire i_test1_clk;
 output wire i_test1_rstnn;
 output wire i_pll0_external_rstnn;
 input wire i_pll0_clk_system;
-input wire i_pll0_clk_100M;
-input wire i_pll0_clk_200M;
 output wire i_system_sram_clk;
 output wire i_system_sram_rstnn;
 input wire pjtag_rtck;
@@ -199,6 +187,7 @@ input wire [(2)-1:0] i_system_sram_sxrresp;
 
 
 
+wire autoname_106;
 wire rstnn_noc;
 wire i_main_core_clk;
 wire i_main_core_rstnn;
@@ -287,11 +276,6 @@ wire autoname_105_rstnn;
 wire [(11)-1:0] autoname_105_tick_config;
 wire autoname_105_tick_1us;
 wire autoname_105_tick_62d5ms;
-wire autoname_106_clk;
-wire autoname_106_rstnn;
-wire [(11)-1:0] autoname_106_tick_config;
-wire autoname_106_tick_1us;
-wire autoname_106_tick_62d5ms;
 wire autoname_107_clk;
 wire autoname_107_rstnn;
 wire autoname_107_tick_1us;
@@ -433,10 +417,8 @@ wire [(`BW_SVRING_LINK)-1:0] default_slave_svri_rlink;
 wire default_slave_svri_rack;
 wire [(`BW_SVRING_LINK)-1:0] default_slave_svri_slink;
 wire default_slave_svri_sack;
-wire i_mnim_i_main_core_inst_clk_network;
-wire i_mnim_i_main_core_inst_rstnn_network;
-wire i_mnim_i_main_core_inst_clk_master;
-wire i_mnim_i_main_core_inst_rstnn_master;
+wire i_mnim_i_main_core_inst_clk;
+wire i_mnim_i_main_core_inst_rstnn;
 wire i_mnim_i_main_core_inst_comm_disable;
 wire i_mnim_i_main_core_inst_local_allows_holds;
 wire i_mnim_i_main_core_inst_rxawready;
@@ -485,10 +467,8 @@ wire [(32)-1:0] i_mnim_i_main_core_inst_local_spwdata;
 wire i_mnim_i_main_core_inst_local_spready;
 wire [(32)-1:0] i_mnim_i_main_core_inst_local_sprdata;
 wire i_mnim_i_main_core_inst_local_spslverr;
-wire i_mnim_i_main_core_data_clk_network;
-wire i_mnim_i_main_core_data_rstnn_network;
-wire i_mnim_i_main_core_data_clk_master;
-wire i_mnim_i_main_core_data_rstnn_master;
+wire i_mnim_i_main_core_data_clk;
+wire i_mnim_i_main_core_data_rstnn;
 wire i_mnim_i_main_core_data_comm_disable;
 wire i_mnim_i_main_core_data_local_allows_holds;
 wire i_mnim_i_main_core_data_rxawready;
@@ -537,10 +517,8 @@ wire [(32)-1:0] i_mnim_i_main_core_data_local_spwdata;
 wire i_mnim_i_main_core_data_local_spready;
 wire [(32)-1:0] i_mnim_i_main_core_data_local_sprdata;
 wire i_mnim_i_main_core_data_local_spslverr;
-wire i_mnim_platform_controller_master_clk_network;
-wire i_mnim_platform_controller_master_rstnn_network;
-wire i_mnim_platform_controller_master_clk_master;
-wire i_mnim_platform_controller_master_rstnn_master;
+wire i_mnim_platform_controller_master_clk;
+wire i_mnim_platform_controller_master_rstnn;
 wire i_mnim_platform_controller_master_comm_disable;
 wire i_mnim_platform_controller_master_rhready;
 wire [(32)-1:0] i_mnim_platform_controller_master_rhaddr;
@@ -621,10 +599,8 @@ wire [(`BW_SVRING_LINK)-1:0] i_snim_i_system_sram_no_name_svri_rlink;
 wire i_snim_i_system_sram_no_name_svri_rack;
 wire [(`BW_SVRING_LINK)-1:0] i_snim_i_system_sram_no_name_svri_slink;
 wire i_snim_i_system_sram_no_name_svri_sack;
-wire i_snim_common_peri_group_no_name_clk_network;
-wire i_snim_common_peri_group_no_name_rstnn_network;
-wire i_snim_common_peri_group_no_name_clk_slave;
-wire i_snim_common_peri_group_no_name_rstnn_slave;
+wire i_snim_common_peri_group_no_name_clk;
+wire i_snim_common_peri_group_no_name_rstnn;
 wire i_snim_common_peri_group_no_name_comm_disable;
 wire i_snim_common_peri_group_no_name_spsel;
 wire i_snim_common_peri_group_no_name_spenable;
@@ -642,10 +618,8 @@ wire [(`BW_SVRING_LINK)-1:0] i_snim_common_peri_group_no_name_svri_rlink;
 wire i_snim_common_peri_group_no_name_svri_rack;
 wire [(`BW_SVRING_LINK)-1:0] i_snim_common_peri_group_no_name_svri_slink;
 wire i_snim_common_peri_group_no_name_svri_sack;
-wire i_snim_external_peri_group_no_name_clk_network;
-wire i_snim_external_peri_group_no_name_rstnn_network;
-wire i_snim_external_peri_group_no_name_clk_slave;
-wire i_snim_external_peri_group_no_name_rstnn_slave;
+wire i_snim_external_peri_group_no_name_clk;
+wire i_snim_external_peri_group_no_name_rstnn;
 wire i_snim_external_peri_group_no_name_comm_disable;
 wire i_snim_external_peri_group_no_name_spsel;
 wire i_snim_external_peri_group_no_name_spenable;
@@ -663,10 +637,8 @@ wire [(`BW_SVRING_LINK)-1:0] i_snim_external_peri_group_no_name_svri_rlink;
 wire i_snim_external_peri_group_no_name_svri_rack;
 wire [(`BW_SVRING_LINK)-1:0] i_snim_external_peri_group_no_name_svri_slink;
 wire i_snim_external_peri_group_no_name_svri_sack;
-wire i_snim_platform_controller_no_name_clk_network;
-wire i_snim_platform_controller_no_name_rstnn_network;
-wire i_snim_platform_controller_no_name_clk_slave;
-wire i_snim_platform_controller_no_name_rstnn_slave;
+wire i_snim_platform_controller_no_name_clk;
+wire i_snim_platform_controller_no_name_rstnn;
 wire i_snim_platform_controller_no_name_comm_disable;
 wire i_snim_platform_controller_no_name_spsel;
 wire i_snim_platform_controller_no_name_spenable;
@@ -808,16 +780,6 @@ autoname_105
 	.tick_config(autoname_105_tick_config),
 	.tick_1us(autoname_105_tick_1us),
 	.tick_62d5ms(autoname_105_tick_62d5ms)
-);
-
-ERVP_TICK_GENERATOR
-autoname_106
-(
-	.clk(autoname_106_clk),
-	.rstnn(autoname_106_rstnn),
-	.tick_config(autoname_106_tick_config),
-	.tick_1us(autoname_106_tick_1us),
-	.tick_62d5ms(autoname_106_tick_62d5ms)
 );
 
 ERVP_REAL_CLOCK
@@ -1017,7 +979,7 @@ default_slave
 	.svri_sack(default_slave_svri_sack)
 );
 
-MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_MNIM_I_MAIN_CORE_INST),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1029,10 +991,8 @@ MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_mnim_i_main_core_inst
 (
-	.clk_network(i_mnim_i_main_core_inst_clk_network),
-	.rstnn_network(i_mnim_i_main_core_inst_rstnn_network),
-	.clk_master(i_mnim_i_main_core_inst_clk_master),
-	.rstnn_master(i_mnim_i_main_core_inst_rstnn_master),
+	.clk(i_mnim_i_main_core_inst_clk),
+	.rstnn(i_mnim_i_main_core_inst_rstnn),
 	.comm_disable(i_mnim_i_main_core_inst_comm_disable),
 	.local_allows_holds(i_mnim_i_main_core_inst_local_allows_holds),
 	.rxawready(i_mnim_i_main_core_inst_rxawready),
@@ -1083,7 +1043,7 @@ i_mnim_i_main_core_inst
 	.local_spslverr(i_mnim_i_main_core_inst_local_spslverr)
 );
 
-MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_MNIM_I_MAIN_CORE_DATA),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1097,10 +1057,8 @@ MUNOC_AXI_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_mnim_i_main_core_data
 (
-	.clk_network(i_mnim_i_main_core_data_clk_network),
-	.rstnn_network(i_mnim_i_main_core_data_rstnn_network),
-	.clk_master(i_mnim_i_main_core_data_clk_master),
-	.rstnn_master(i_mnim_i_main_core_data_rstnn_master),
+	.clk(i_mnim_i_main_core_data_clk),
+	.rstnn(i_mnim_i_main_core_data_rstnn),
 	.comm_disable(i_mnim_i_main_core_data_comm_disable),
 	.local_allows_holds(i_mnim_i_main_core_data_local_allows_holds),
 	.rxawready(i_mnim_i_main_core_data_rxawready),
@@ -1151,7 +1109,7 @@ i_mnim_i_main_core_data
 	.local_spslverr(i_mnim_i_main_core_data_local_spslverr)
 );
 
-MUNOC_AHB_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_AHB_MASTER_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_MNIM_PLATFORM_CONTROLLER_MASTER),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1162,10 +1120,8 @@ MUNOC_AHB_MASTER_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_mnim_platform_controller_master
 (
-	.clk_network(i_mnim_platform_controller_master_clk_network),
-	.rstnn_network(i_mnim_platform_controller_master_rstnn_network),
-	.clk_master(i_mnim_platform_controller_master_clk_master),
-	.rstnn_master(i_mnim_platform_controller_master_rstnn_master),
+	.clk(i_mnim_platform_controller_master_clk),
+	.rstnn(i_mnim_platform_controller_master_rstnn),
 	.comm_disable(i_mnim_platform_controller_master_comm_disable),
 	.rhready(i_mnim_platform_controller_master_rhready),
 	.rhaddr(i_mnim_platform_controller_master_rhaddr),
@@ -1275,7 +1231,7 @@ i_snim_i_system_sram_no_name
 	.svri_sack(i_snim_i_system_sram_no_name_svri_sack)
 );
 
-MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_SNIM_COMMON_PERI_GROUP_NO_NAME),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1286,10 +1242,8 @@ MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_snim_common_peri_group_no_name
 (
-	.clk_network(i_snim_common_peri_group_no_name_clk_network),
-	.rstnn_network(i_snim_common_peri_group_no_name_rstnn_network),
-	.clk_slave(i_snim_common_peri_group_no_name_clk_slave),
-	.rstnn_slave(i_snim_common_peri_group_no_name_rstnn_slave),
+	.clk(i_snim_common_peri_group_no_name_clk),
+	.rstnn(i_snim_common_peri_group_no_name_rstnn),
 	.comm_disable(i_snim_common_peri_group_no_name_comm_disable),
 	.spsel(i_snim_common_peri_group_no_name_spsel),
 	.spenable(i_snim_common_peri_group_no_name_spenable),
@@ -1309,7 +1263,7 @@ i_snim_common_peri_group_no_name
 	.svri_sack(i_snim_common_peri_group_no_name_svri_sack)
 );
 
-MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_SNIM_EXTERNAL_PERI_GROUP_NO_NAME),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1320,10 +1274,8 @@ MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_snim_external_peri_group_no_name
 (
-	.clk_network(i_snim_external_peri_group_no_name_clk_network),
-	.rstnn_network(i_snim_external_peri_group_no_name_rstnn_network),
-	.clk_slave(i_snim_external_peri_group_no_name_clk_slave),
-	.rstnn_slave(i_snim_external_peri_group_no_name_rstnn_slave),
+	.clk(i_snim_external_peri_group_no_name_clk),
+	.rstnn(i_snim_external_peri_group_no_name_rstnn),
 	.comm_disable(i_snim_external_peri_group_no_name_comm_disable),
 	.spsel(i_snim_external_peri_group_no_name_spsel),
 	.spenable(i_snim_external_peri_group_no_name_spenable),
@@ -1343,7 +1295,7 @@ i_snim_external_peri_group_no_name
 	.svri_sack(i_snim_external_peri_group_no_name_svri_sack)
 );
 
-MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
+MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE
 #(
 	.NODE_ID(`NODE_ID_I_SNIM_PLATFORM_CONTROLLER_NO_NAME),
 	.BW_FNI_PHIT(BW_FNI_PHIT),
@@ -1354,10 +1306,8 @@ MUNOC_APB_SLAVE_NETWORK_INTERFACE_MODULE_ASYNCH
 )
 i_snim_platform_controller_no_name
 (
-	.clk_network(i_snim_platform_controller_no_name_clk_network),
-	.rstnn_network(i_snim_platform_controller_no_name_rstnn_network),
-	.clk_slave(i_snim_platform_controller_no_name_clk_slave),
-	.rstnn_slave(i_snim_platform_controller_no_name_rstnn_slave),
+	.clk(i_snim_platform_controller_no_name_clk),
+	.rstnn(i_snim_platform_controller_no_name_rstnn),
 	.comm_disable(i_snim_platform_controller_no_name_comm_disable),
 	.spsel(i_snim_platform_controller_no_name_spsel),
 	.spenable(i_snim_platform_controller_no_name_spenable),
@@ -1399,24 +1349,23 @@ i_system_router
 	.sbni_ready_list(i_system_router_sbni_ready_list)
 );
 
-assign clk_core = clk_100M;
-assign clk_noc = clk_200M;
+assign clk_core = clk_system;
 assign clk_system_external = clk_system;
 assign clk_system_debug = clk_system;
 assign clk_local_access = clk_core;
 assign clk_process_000 = clk_core;
-assign gclk_core = clk_core;
-assign gclk_noc = clk_noc;
-assign gclk_100M = clk_100M;
-assign gclk_200M = clk_200M;
+assign clk_noc = clk_core;
 assign gclk_system = clk_system;
+assign gclk_core = clk_core;
 assign gclk_system_external = clk_system_external;
 assign gclk_system_debug = clk_system_debug;
 assign gclk_local_access = clk_local_access;
 assign gclk_process_000 = clk_process_000;
+assign gclk_noc = clk_noc;
 assign tick_1us = autoname_105_tick_1us;
 assign tick_62d5ms = autoname_105_tick_62d5ms;
 assign tick_gpio = external_peri_group_tick_gpio;
+assign autoname_106 = tick_1us;
 assign spi_common_sclk = external_peri_group_spi_common_sclk;
 assign spi_common_sdq0 = external_peri_group_spi_common_sdq0;
 assign global_rstnn = platform_controller_global_rstnn;
@@ -1426,11 +1375,10 @@ assign rstpp_seqeunce = platform_controller_rstpp_seqeunce;
 assign i_system_sram_rstnn = rstnn_seqeunce[1];
 assign common_peri_group_rstnn = rstnn_seqeunce[1];
 assign autoname_105_rstnn = rstnn_seqeunce[1];
-assign autoname_106_rstnn = rstnn_seqeunce[1];
 assign autoname_107_rstnn = rstnn_seqeunce[2];
 assign external_peri_group_rstnn = rstnn_seqeunce[2];
 assign core_peri_group_rstnn = rstnn_seqeunce[2];
-assign platform_controller_rstnn = rstnn_seqeunce[2];
+assign platform_controller_rstnn = rstnn_seqeunce[3];
 assign default_slave_rstnn_network = rstnn_seqeunce[3];
 assign default_slave_rstnn_debug = rstnn_seqeunce[3];
 assign i_test1_rstnn = rstnn_seqeunce[4];
@@ -1442,11 +1390,8 @@ assign common_peri_group_clk = clk_system;
 assign autoname_105_clk = clk_system;
 assign autoname_107_clk = clk_system;
 assign platform_controller_clk = clk_system;
-assign clk_100M = i_pll0_clk_100M;
-assign clk_200M = i_pll0_clk_200M;
-assign autoname_106_clk = gclk_local_access;
-assign core_peri_group_clk = gclk_local_access;
 assign external_peri_group_clk = gclk_system_external;
+assign core_peri_group_clk = gclk_local_access;
 assign default_slave_clk_debug = gclk_system_debug;
 assign i_main_core_clk = gclk_process_000;
 assign rstnn_noc = rstnn_seqeunce[1];
@@ -1455,60 +1400,47 @@ assign i_system_router_clk = gclk_noc;
 assign i_test1_clk = gclk_noc;
 assign i_system_sram_clk = gclk_noc;
 assign default_slave_clk_network = gclk_noc;
-assign i_mnim_i_main_core_inst_clk_network = gclk_noc;
-assign i_mnim_i_main_core_inst_rstnn_network = rstnn_noc;
-assign i_mnim_i_main_core_inst_clk_master = gclk_process_000;
-assign i_mnim_i_main_core_inst_rstnn_master = rstnn_seqeunce[5];
-assign i_mnim_i_main_core_data_clk_network = gclk_noc;
-assign i_mnim_i_main_core_data_rstnn_network = rstnn_noc;
-assign i_mnim_i_main_core_data_clk_master = gclk_process_000;
-assign i_mnim_i_main_core_data_rstnn_master = rstnn_seqeunce[5];
-assign i_mnim_platform_controller_master_clk_network = gclk_noc;
-assign i_mnim_platform_controller_master_rstnn_network = rstnn_noc;
-assign i_mnim_platform_controller_master_clk_master = clk_system;
-assign i_mnim_platform_controller_master_rstnn_master = rstnn_seqeunce[2];
+assign i_mnim_i_main_core_inst_clk = gclk_noc;
+assign i_mnim_i_main_core_inst_rstnn = rstnn_noc;
+assign i_mnim_i_main_core_data_clk = gclk_noc;
+assign i_mnim_i_main_core_data_rstnn = rstnn_noc;
+assign i_mnim_platform_controller_master_clk = gclk_noc;
+assign i_mnim_platform_controller_master_rstnn = rstnn_noc;
 assign i_snim_i_test1_slave_clk = gclk_noc;
 assign i_snim_i_test1_slave_rstnn = rstnn_noc;
 assign i_snim_i_system_sram_no_name_clk = gclk_noc;
 assign i_snim_i_system_sram_no_name_rstnn = rstnn_noc;
-assign i_snim_common_peri_group_no_name_clk_network = gclk_noc;
-assign i_snim_common_peri_group_no_name_rstnn_network = rstnn_noc;
-assign i_snim_common_peri_group_no_name_clk_slave = clk_system;
-assign i_snim_common_peri_group_no_name_rstnn_slave = rstnn_seqeunce[1];
-assign i_snim_external_peri_group_no_name_clk_network = gclk_noc;
-assign i_snim_external_peri_group_no_name_rstnn_network = rstnn_noc;
-assign i_snim_external_peri_group_no_name_clk_slave = gclk_system_external;
-assign i_snim_external_peri_group_no_name_rstnn_slave = rstnn_seqeunce[2];
-assign i_snim_platform_controller_no_name_clk_network = gclk_noc;
-assign i_snim_platform_controller_no_name_rstnn_network = rstnn_noc;
-assign i_snim_platform_controller_no_name_clk_slave = clk_system;
-assign i_snim_platform_controller_no_name_rstnn_slave = rstnn_seqeunce[2];
+assign i_snim_common_peri_group_no_name_clk = gclk_noc;
+assign i_snim_common_peri_group_no_name_rstnn = rstnn_noc;
+assign i_snim_external_peri_group_no_name_clk = gclk_noc;
+assign i_snim_external_peri_group_no_name_rstnn = rstnn_noc;
+assign i_snim_platform_controller_no_name_clk = gclk_noc;
+assign i_snim_platform_controller_no_name_rstnn = rstnn_noc;
 assign i_pll0_external_rstnn = platform_controller_global_rstnn;
 assign core_peri_group_lock_status_list = common_peri_group_lock_status_list;
 assign core_peri_group_thread_status_list = common_peri_group_thread_status_list;
 assign common_peri_group_real_clock = autoname_107_real_clock;
 assign core_peri_group_global_tag_list = common_peri_group_global_tag_list;
 assign autoname_105_tick_config = common_peri_group_system_tick_config;
-assign autoname_106_tick_config = common_peri_group_core_tick_config;
 assign autoname_107_tick_1us = autoname_105_tick_1us;
 assign external_peri_group_tick_1us = autoname_105_tick_1us;
-assign core_peri_group_tick_1us = autoname_106_tick_1us;
+assign core_peri_group_tick_1us = autoname_106;
 assign platform_controller_external_rstnn = external_rstnn;
 assign platform_controller_jtag_select = `JTAG_SELECT_NOC;
 assign platform_controller_initialized = 1'b 1;
 assign i_main_core_interrupt_vector = core_peri_group_core_interrupt_vector;
 assign core_peri_group_allows_holds = i_mnim_i_main_core_data_local_allows_holds;
 assign default_slave_comm_disable = 0;
-assign i_mnim_platform_controller_master_comm_disable = 0;
-assign i_snim_common_peri_group_no_name_comm_disable = 0;
-assign i_snim_external_peri_group_no_name_comm_disable = 0;
-assign i_snim_platform_controller_no_name_comm_disable = 0;
 assign core_peri_group_plic_interrupt = 0;
 assign platform_controller_boot_mode = 0;
 assign i_mnim_i_main_core_inst_comm_disable = 0;
 assign i_mnim_i_main_core_data_comm_disable = 0;
+assign i_mnim_platform_controller_master_comm_disable = 0;
+assign i_snim_common_peri_group_no_name_comm_disable = 0;
+assign i_snim_platform_controller_no_name_comm_disable = 0;
 assign i_snim_i_test1_slave_comm_disable = 0;
 assign i_snim_i_system_sram_no_name_comm_disable = 0;
+assign i_snim_external_peri_group_no_name_comm_disable = 0;
 assign i_main_core_inst_sxawready = i_mnim_i_main_core_inst_rxawready;
 assign i_mnim_i_main_core_inst_rxawvalid = i_main_core_inst_sxawvalid;
 assign i_mnim_i_main_core_inst_rxawaddr = i_main_core_inst_sxawaddr;

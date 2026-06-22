@@ -12073,18 +12073,6 @@
       <width type="dec">1</width>
       <comm_type>clk_system</comm_type>
     </signal>
-    <signal>
-      <name>clk_100M</name>
-      <port>output</port>
-      <width type="dec">1</width>
-      <comm_type>clk_100M</comm_type>
-    </signal>
-    <signal>
-      <name>clk_200M</name>
-      <port>output</port>
-      <width type="dec">1</width>
-      <comm_type>clk_200M</comm_type>
-    </signal>
   </dec_ip>
   <dec_ip>
     <name>tip_hello_clock_pll_0_00</name>
@@ -12111,18 +12099,6 @@
       <port>output</port>
       <width type="dec">1</width>
       <comm_type>clk_system</comm_type>
-    </signal>
-    <signal>
-      <name>clk_100M</name>
-      <port>output</port>
-      <width type="dec">1</width>
-      <comm_type>clk_100M</comm_type>
-    </signal>
-    <signal>
-      <name>clk_200M</name>
-      <port>output</port>
-      <width type="dec">1</width>
-      <comm_type>clk_200M</comm_type>
     </signal>
   </dec_ip>
   <dec_ip>
@@ -12204,37 +12180,16 @@
     <name>tip_hello_rtl</name>
     <hdl_name>TIP_HELLO_RTL</hdl_name>
     <signal>
-      <name>clk_core</name>
-      <width type="dec">1</width>
-      <comm_type>clk_core</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>clk_noc</name>
-      <width type="dec">1</width>
-      <comm_type>clk_noc</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>clk_100M</name>
-      <width type="dec">1</width>
-      <comm_type>clk_100M</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>clk_200M</name>
-      <width type="dec">1</width>
-      <comm_type>clk_200M</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
       <name>clk_system</name>
       <width type="dec">1</width>
       <comm_type>clk_system</comm_type>
+      <user_available/>
+      <port>output</port>
+    </signal>
+    <signal>
+      <name>clk_core</name>
+      <width type="dec">1</width>
+      <comm_type>clk_core</comm_type>
       <user_available/>
       <port>output</port>
     </signal>
@@ -12267,30 +12222,9 @@
       <port>output</port>
     </signal>
     <signal>
-      <name>gclk_core</name>
+      <name>clk_noc</name>
       <width type="dec">1</width>
-      <comm_type>gclk_core</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>gclk_noc</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_noc</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>gclk_100M</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_100M</comm_type>
-      <user_available/>
-      <port>output</port>
-    </signal>
-    <signal>
-      <name>gclk_200M</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_200M</comm_type>
+      <comm_type>clk_noc</comm_type>
       <user_available/>
       <port>output</port>
     </signal>
@@ -12298,6 +12232,13 @@
       <name>gclk_system</name>
       <width type="dec">1</width>
       <comm_type>gclk_system</comm_type>
+      <user_available/>
+      <port>output</port>
+    </signal>
+    <signal>
+      <name>gclk_core</name>
+      <width type="dec">1</width>
+      <comm_type>gclk_core</comm_type>
       <user_available/>
       <port>output</port>
     </signal>
@@ -12326,6 +12267,13 @@
       <name>gclk_process_000</name>
       <width type="dec">1</width>
       <comm_type>gclk_process_000</comm_type>
+      <user_available/>
+      <port>output</port>
+    </signal>
+    <signal>
+      <name>gclk_noc</name>
+      <width type="dec">1</width>
+      <comm_type>gclk_noc</comm_type>
       <user_available/>
       <port>output</port>
     </signal>
@@ -12423,18 +12371,6 @@
       <port>input</port>
       <width type="dec">1</width>
       <comm_type>clk_system</comm_type>
-    </signal>
-    <signal>
-      <name>i_pll0_clk_100M</name>
-      <port>input</port>
-      <width type="dec">1</width>
-      <comm_type>clk_100M</comm_type>
-    </signal>
-    <signal>
-      <name>i_pll0_clk_200M</name>
-      <port>input</port>
-      <width type="dec">1</width>
-      <comm_type>clk_200M</comm_type>
     </signal>
     <signal>
       <name>i_system_sram_clk</name>

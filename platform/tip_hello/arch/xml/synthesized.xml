@@ -45,80 +45,6 @@
         <value type="bool">True</value>
       </define>
     </spec>
-    <clock_info>
-      <define>
-        <name>clk_core</name>
-        <value type="equal">clk_100M</value>
-      </define>
-      <define>
-        <name>clk_noc</name>
-        <value type="equal">clk_200M</value>
-      </define>
-      <define>
-        <name>clk_100M</name>
-        <value type="dec">100000000</value>
-      </define>
-      <define>
-        <name>clk_200M</name>
-        <value type="dec">200000000</value>
-      </define>
-      <define>
-        <name>clk_system</name>
-        <value type="dec">50000000</value>
-      </define>
-      <define>
-        <name>clk_system_external</name>
-        <value type="equal">clk_system</value>
-      </define>
-      <define>
-        <name>clk_system_debug</name>
-        <value type="equal">clk_system</value>
-      </define>
-      <define>
-        <name>clk_local_access</name>
-        <value type="equal">clk_core</value>
-      </define>
-      <define>
-        <name>clk_process_000</name>
-        <value type="equal">clk_core</value>
-      </define>
-      <define>
-        <name>gclk_core</name>
-        <value type="equal">clk_core</value>
-      </define>
-      <define>
-        <name>gclk_noc</name>
-        <value type="equal">clk_noc</value>
-      </define>
-      <define>
-        <name>gclk_100M</name>
-        <value type="equal">clk_100M</value>
-      </define>
-      <define>
-        <name>gclk_200M</name>
-        <value type="equal">clk_200M</value>
-      </define>
-      <define>
-        <name>gclk_system</name>
-        <value type="equal">clk_system</value>
-      </define>
-      <define>
-        <name>gclk_system_external</name>
-        <value type="equal">clk_system_external</value>
-      </define>
-      <define>
-        <name>gclk_system_debug</name>
-        <value type="equal">clk_system_debug</value>
-      </define>
-      <define>
-        <name>gclk_local_access</name>
-        <value type="equal">clk_local_access</value>
-      </define>
-      <define>
-        <name>gclk_process_000</name>
-        <value type="equal">clk_process_000</value>
-      </define>
-    </clock_info>
     <ip_instance>
       <name>i_main_core</name>
       <library_name>rvc_orca</library_name>
@@ -147,14 +73,6 @@
         <define>
           <name>clk_system</name>
           <value type="dec">50000000</value>
-        </define>
-        <define>
-          <name>clk_100M</name>
-          <value type="dec">100000000</value>
-        </define>
-        <define>
-          <name>clk_200M</name>
-          <value type="dec">200000000</value>
         </define>
       </clock_info>
     </ip_instance>
@@ -201,10 +119,6 @@
     <ip_instance>
       <name>autoname_105</name>
       <library_name>tick_generator</library_name>
-    </ip_instance>
-    <ip_instance>
-      <name>autoname_106</name>
-      <library_name>timer_tick_generator</library_name>
     </ip_instance>
     <ip_instance>
       <name>autoname_107</name>
@@ -305,7 +219,7 @@
         <id>BW_NODE_DATA</id>
         <value type="dec">32</value>
       </parameter>
-      <library_name>mni_axi_asynch</library_name>
+      <library_name>mni_axi_synch</library_name>
       <domain>gclk_process_000</domain>
     </ip_instance>
     <ip_instance>
@@ -338,7 +252,7 @@
         <id>LOCAL_UPPER_ADDR</id>
         <value type="text">4'h F</value>
       </parameter>
-      <library_name>mni_axi_asynch</library_name>
+      <library_name>mni_axi_synch</library_name>
       <domain>gclk_process_000</domain>
       <interface>
         <name>local</name>
@@ -371,7 +285,7 @@
         <id>BW_NODE_DATA</id>
         <value type="dec">32</value>
       </parameter>
-      <library_name>mni_ahbm_asynch</library_name>
+      <library_name>mni_ahbm_synch</library_name>
       <domain>clk_system</domain>
     </ip_instance>
     <ip_instance>
@@ -446,7 +360,7 @@
         <id>BW_NODE_DATA</id>
         <value type="dec">32</value>
       </parameter>
-      <library_name>sni_apb_asynch</library_name>
+      <library_name>sni_apb_synch</library_name>
       <domain>clk_system</domain>
     </ip_instance>
     <ip_instance>
@@ -471,7 +385,7 @@
         <id>BW_NODE_DATA</id>
         <value type="dec">32</value>
       </parameter>
-      <library_name>sni_apb_asynch</library_name>
+      <library_name>sni_apb_synch</library_name>
       <domain>gclk_system_external</domain>
     </ip_instance>
     <ip_instance>
@@ -496,37 +410,77 @@
         <id>BW_NODE_DATA</id>
         <value type="dec">32</value>
       </parameter>
-      <library_name>sni_apb_asynch</library_name>
+      <library_name>sni_apb_synch</library_name>
       <domain>clk_system</domain>
     </ip_instance>
-    <signal>
-      <name>clk_core</name>
-      <width type="dec">1</width>
-      <comm_type>clk_core</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>clk_noc</name>
-      <width type="dec">1</width>
-      <comm_type>clk_noc</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>clk_100M</name>
-      <width type="dec">1</width>
-      <comm_type>clk_100M</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>clk_200M</name>
-      <width type="dec">1</width>
-      <comm_type>clk_200M</comm_type>
-      <user_available/>
-    </signal>
+    <clock_info>
+      <define>
+        <name>clk_system</name>
+        <value type="dec">50000000</value>
+      </define>
+      <define>
+        <name>clk_core</name>
+        <value type="equal">clk_system</value>
+      </define>
+      <define>
+        <name>clk_system_external</name>
+        <value type="equal">clk_system</value>
+      </define>
+      <define>
+        <name>clk_system_debug</name>
+        <value type="equal">clk_system</value>
+      </define>
+      <define>
+        <name>clk_local_access</name>
+        <value type="equal">clk_core</value>
+      </define>
+      <define>
+        <name>clk_process_000</name>
+        <value type="equal">clk_core</value>
+      </define>
+      <define>
+        <name>clk_noc</name>
+        <value type="equal">clk_core</value>
+      </define>
+      <define>
+        <name>gclk_system</name>
+        <value type="equal">clk_system</value>
+      </define>
+      <define>
+        <name>gclk_core</name>
+        <value type="equal">clk_core</value>
+      </define>
+      <define>
+        <name>gclk_system_external</name>
+        <value type="equal">clk_system_external</value>
+      </define>
+      <define>
+        <name>gclk_system_debug</name>
+        <value type="equal">clk_system_debug</value>
+      </define>
+      <define>
+        <name>gclk_local_access</name>
+        <value type="equal">clk_local_access</value>
+      </define>
+      <define>
+        <name>gclk_process_000</name>
+        <value type="equal">clk_process_000</value>
+      </define>
+      <define>
+        <name>gclk_noc</name>
+        <value type="equal">clk_noc</value>
+      </define>
+    </clock_info>
     <signal>
       <name>clk_system</name>
       <width type="dec">1</width>
       <comm_type>clk_system</comm_type>
+      <user_available/>
+    </signal>
+    <signal>
+      <name>clk_core</name>
+      <width type="dec">1</width>
+      <comm_type>clk_core</comm_type>
       <user_available/>
     </signal>
     <signal>
@@ -554,6 +508,12 @@
       <user_available/>
     </signal>
     <signal>
+      <name>clk_noc</name>
+      <width type="dec">1</width>
+      <comm_type>clk_noc</comm_type>
+      <user_available/>
+    </signal>
+    <signal>
       <name>external_clk_0</name>
       <port>input</port>
       <width type="dec">1</width>
@@ -564,33 +524,15 @@
       <width type="dec">1</width>
     </signal>
     <signal>
-      <name>gclk_core</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_core</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>gclk_noc</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_noc</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>gclk_100M</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_100M</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
-      <name>gclk_200M</name>
-      <width type="dec">1</width>
-      <comm_type>gclk_200M</comm_type>
-      <user_available/>
-    </signal>
-    <signal>
       <name>gclk_system</name>
       <width type="dec">1</width>
       <comm_type>gclk_system</comm_type>
+      <user_available/>
+    </signal>
+    <signal>
+      <name>gclk_core</name>
+      <width type="dec">1</width>
+      <comm_type>gclk_core</comm_type>
       <user_available/>
     </signal>
     <signal>
@@ -618,6 +560,12 @@
       <user_available/>
     </signal>
     <signal>
+      <name>gclk_noc</name>
+      <width type="dec">1</width>
+      <comm_type>gclk_noc</comm_type>
+      <user_available/>
+    </signal>
+    <signal>
       <name>tick_1us</name>
       <width type="dec">1</width>
       <user_available/>
@@ -631,6 +579,11 @@
       <name>tick_gpio</name>
       <width type="dec">1</width>
       <user_available/>
+    </signal>
+    <signal>
+      <name>autoname_106</name>
+      <width type="dec">1</width>
+      <comm_type>tick_timer</comm_type>
     </signal>
     <signal>
       <name>spi_common_sclk</name>
@@ -684,12 +637,8 @@
       <comm_type>rstnn_noc</comm_type>
     </signal>
     <connect>
-      <input>clk_100M</input>
+      <input>clk_system</input>
       <output>clk_core</output>
-    </connect>
-    <connect>
-      <input>clk_200M</input>
-      <output>clk_noc</output>
     </connect>
     <connect>
       <input>clk_system</input>
@@ -708,6 +657,10 @@
       <output>clk_process_000</output>
     </connect>
     <connect>
+      <input>clk_core</input>
+      <output>clk_noc</output>
+    </connect>
+    <connect>
       <input>external_clk_0</input>
       <output>i_pll0/external_clk</output>
     </connect>
@@ -716,24 +669,12 @@
       <output>i_pll0/external_clk_pair</output>
     </connect>
     <connect>
-      <input>clk_core</input>
-      <output>gclk_core</output>
-    </connect>
-    <connect>
-      <input>clk_noc</input>
-      <output>gclk_noc</output>
-    </connect>
-    <connect>
-      <input>clk_100M</input>
-      <output>gclk_100M</output>
-    </connect>
-    <connect>
-      <input>clk_200M</input>
-      <output>gclk_200M</output>
-    </connect>
-    <connect>
       <input>clk_system</input>
       <output>gclk_system</output>
+    </connect>
+    <connect>
+      <input>clk_core</input>
+      <output>gclk_core</output>
     </connect>
     <connect>
       <input>clk_system_external</input>
@@ -752,6 +693,10 @@
       <output>gclk_process_000</output>
     </connect>
     <connect>
+      <input>clk_noc</input>
+      <output>gclk_noc</output>
+    </connect>
+    <connect>
       <input>autoname_105/tick_1us</input>
       <output>tick_1us</output>
     </connect>
@@ -762,6 +707,10 @@
     <connect>
       <input>external_peri_group/tick_gpio</input>
       <output>tick_gpio</output>
+    </connect>
+    <connect>
+      <input>tick_1us</input>
+      <output>autoname_106</output>
     </connect>
     <connect>
       <input>external_peri_group/spi_common_sclk</input>
@@ -800,10 +749,6 @@
       <output>autoname_105/rstnn</output>
     </connect>
     <connect>
-      <input>rstnn_seqeunce[1]</input>
-      <output>autoname_106/rstnn</output>
-    </connect>
-    <connect>
       <input>rstnn_seqeunce[2]</input>
       <output>autoname_107/rstnn</output>
     </connect>
@@ -816,7 +761,7 @@
       <output>core_peri_group/rstnn</output>
     </connect>
     <connect>
-      <input>rstnn_seqeunce[2]</input>
+      <input>rstnn_seqeunce[3]</input>
       <output>platform_controller/rstnn</output>
     </connect>
     <connect>
@@ -864,24 +809,12 @@
       <output>platform_controller/clk</output>
     </connect>
     <connect>
-      <input>i_pll0/clk_100M</input>
-      <output>clk_100M</output>
-    </connect>
-    <connect>
-      <input>i_pll0/clk_200M</input>
-      <output>clk_200M</output>
-    </connect>
-    <connect>
-      <input>gclk_local_access</input>
-      <output>autoname_106/clk</output>
+      <input>gclk_system_external</input>
+      <output>external_peri_group/clk</output>
     </connect>
     <connect>
       <input>gclk_local_access</input>
       <output>core_peri_group/clk</output>
-    </connect>
-    <connect>
-      <input>gclk_system_external</input>
-      <output>external_peri_group/clk</output>
     </connect>
     <connect>
       <input>gclk_system_debug</input>
@@ -917,19 +850,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_mnim_i_main_core_inst/clk_network</output>
+      <output>i_mnim_i_main_core_inst/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_mnim_i_main_core_inst/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>gclk_process_000</input>
-      <output>i_mnim_i_main_core_inst/clk_master</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[5]</input>
-      <output>i_mnim_i_main_core_inst/rstnn_master</output>
+      <output>i_mnim_i_main_core_inst/rstnn</output>
     </connect>
     <connect>
       <input>i_main_core/inst</input>
@@ -937,19 +862,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_mnim_i_main_core_data/clk_network</output>
+      <output>i_mnim_i_main_core_data/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_mnim_i_main_core_data/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>gclk_process_000</input>
-      <output>i_mnim_i_main_core_data/clk_master</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[5]</input>
-      <output>i_mnim_i_main_core_data/rstnn_master</output>
+      <output>i_mnim_i_main_core_data/rstnn</output>
     </connect>
     <connect>
       <input>i_main_core/data</input>
@@ -957,19 +874,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_mnim_platform_controller_master/clk_network</output>
+      <output>i_mnim_platform_controller_master/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_mnim_platform_controller_master/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>clk_system</input>
-      <output>i_mnim_platform_controller_master/clk_master</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[2]</input>
-      <output>i_mnim_platform_controller_master/rstnn_master</output>
+      <output>i_mnim_platform_controller_master/rstnn</output>
     </connect>
     <connect>
       <input>platform_controller/master</input>
@@ -1001,19 +910,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_snim_common_peri_group_no_name/clk_network</output>
+      <output>i_snim_common_peri_group_no_name/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_snim_common_peri_group_no_name/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>clk_system</input>
-      <output>i_snim_common_peri_group_no_name/clk_slave</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[1]</input>
-      <output>i_snim_common_peri_group_no_name/rstnn_slave</output>
+      <output>i_snim_common_peri_group_no_name/rstnn</output>
     </connect>
     <connect>
       <input>i_snim_common_peri_group_no_name/ipif</input>
@@ -1021,19 +922,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_snim_external_peri_group_no_name/clk_network</output>
+      <output>i_snim_external_peri_group_no_name/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_snim_external_peri_group_no_name/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>gclk_system_external</input>
-      <output>i_snim_external_peri_group_no_name/clk_slave</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[2]</input>
-      <output>i_snim_external_peri_group_no_name/rstnn_slave</output>
+      <output>i_snim_external_peri_group_no_name/rstnn</output>
     </connect>
     <connect>
       <input>i_snim_external_peri_group_no_name/ipif</input>
@@ -1041,19 +934,11 @@
     </connect>
     <connect>
       <input>gclk_noc</input>
-      <output>i_snim_platform_controller_no_name/clk_network</output>
+      <output>i_snim_platform_controller_no_name/clk</output>
     </connect>
     <connect>
       <input>rstnn_noc</input>
-      <output>i_snim_platform_controller_no_name/rstnn_network</output>
-    </connect>
-    <connect>
-      <input>clk_system</input>
-      <output>i_snim_platform_controller_no_name/clk_slave</output>
-    </connect>
-    <connect>
-      <input>rstnn_seqeunce[2]</input>
-      <output>i_snim_platform_controller_no_name/rstnn_slave</output>
+      <output>i_snim_platform_controller_no_name/rstnn</output>
     </connect>
     <connect>
       <input>i_snim_platform_controller_no_name/ipif</input>
@@ -1124,10 +1009,6 @@
       <output>autoname_105/tick_config</output>
     </connect>
     <connect>
-      <input>common_peri_group/core_tick_config</input>
-      <output>autoname_106/tick_config</output>
-    </connect>
-    <connect>
       <input>autoname_105/tick_1us</input>
       <output>autoname_107/tick_1us</output>
     </connect>
@@ -1136,7 +1017,7 @@
       <output>external_peri_group/tick_1us</output>
     </connect>
     <connect>
-      <input>autoname_106/tick_1us</input>
+      <input>autoname_106</input>
       <output>core_peri_group/tick_1us</output>
     </connect>
     <connect>
@@ -1172,19 +1053,7 @@
       <output>platform_controller/pjtag</output>
     </connect>
     <connect>
-      <input>clk_100M</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>clk_200M</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
       <input>clk_core</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>clk_noc</input>
       <output>`NOT_CONNECT</output>
     </connect>
     <connect>
@@ -1204,6 +1073,14 @@
       <output>`NOT_CONNECT</output>
     </connect>
     <connect>
+      <input>clk_noc</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>gclk_system</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
       <input>gclk_core</input>
       <output>`NOT_CONNECT</output>
     </connect>
@@ -1212,60 +1089,16 @@
       <output>`NOT_CONNECT</output>
     </connect>
     <connect>
-      <input>gclk_100M</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>gclk_200M</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>gclk_system</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
       <input>i_main_core/interrupt_out</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>common_peri_group/core_tick_config</input>
       <output>`NOT_CONNECT</output>
     </connect>
     <connect>
       <input>autoname_105/tick_62d5ms</input>
       <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>autoname_106/tick_62d5ms</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>external_peri_group/olede</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>external_peri_group/wifie</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>i_mnim_i_main_core_inst/local</input>
-      <output>`NOT_CONNECT</output>
-    </connect>
-    <connect>
-      <input>`NOT_CONNECT</input>
-      <output>default_slave/comm_disable</output>
-    </connect>
-    <connect>
-      <input>`NOT_CONNECT</input>
-      <output>i_mnim_platform_controller_master/comm_disable</output>
-    </connect>
-    <connect>
-      <input>`NOT_CONNECT</input>
-      <output>i_snim_common_peri_group_no_name/comm_disable</output>
-    </connect>
-    <connect>
-      <input>`NOT_CONNECT</input>
-      <output>i_snim_external_peri_group_no_name/comm_disable</output>
-    </connect>
-    <connect>
-      <input>`NOT_CONNECT</input>
-      <output>i_snim_platform_controller_no_name/comm_disable</output>
     </connect>
     <connect>
       <input>external_peri_group/tick_gpio</input>
@@ -1290,6 +1123,22 @@
     <connect>
       <input>external_peri_group/wifi_interrupt</input>
       <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>external_peri_group/olede</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>external_peri_group/wifie</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>i_mnim_i_main_core_inst/local</input>
+      <output>`NOT_CONNECT</output>
+    </connect>
+    <connect>
+      <input>`NOT_CONNECT</input>
+      <output>default_slave/comm_disable</output>
     </connect>
     <connect>
       <input>core_peri_group/delay_notice</input>
@@ -1369,11 +1218,27 @@
     </connect>
     <connect>
       <input>`NOT_CONNECT</input>
+      <output>i_mnim_platform_controller_master/comm_disable</output>
+    </connect>
+    <connect>
+      <input>`NOT_CONNECT</input>
+      <output>i_snim_common_peri_group_no_name/comm_disable</output>
+    </connect>
+    <connect>
+      <input>`NOT_CONNECT</input>
+      <output>i_snim_platform_controller_no_name/comm_disable</output>
+    </connect>
+    <connect>
+      <input>`NOT_CONNECT</input>
       <output>i_snim_i_test1_slave/comm_disable</output>
     </connect>
     <connect>
       <input>`NOT_CONNECT</input>
       <output>i_snim_i_system_sram_no_name/comm_disable</output>
+    </connect>
+    <connect>
+      <input>`NOT_CONNECT</input>
+      <output>i_snim_external_peri_group_no_name/comm_disable</output>
     </connect>
     <include_header>ervp_platform_controller_memorymap_offset</include_header>
     <include_header>ervp_external_peri_group_memorymap_offset</include_header>
